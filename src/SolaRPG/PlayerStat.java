@@ -1,5 +1,6 @@
 package SolaRPG;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import org.bukkit.entity.Player;
@@ -12,19 +13,20 @@ public class PlayerStat {
 //
 //	}
 	
-	private String[] types = {"str", "dex", "intel", "vit", "luc", "map", "mp", "rng"};
+	public static String[] types = {"str", "dex", "intel", "vit", "luc", "map", "mp", "rng"};
 	private HashMap<String, Integer> statMap;
+	private Player player;
 	
-	public PlayerStat() {
-		for(String s : types)
-		{
-			statMap.put(s, 0);
-		}
-	}
-	
+//	public PlayerStat() {
+//		for(String s : types)
+//		{
+//			statMap.put(s, 0);
+//		}
+//	}
+
 	
 	public PlayerStat(Player p) {
-		
+		player = p;
 	}
 	
 	
@@ -57,4 +59,19 @@ public class PlayerStat {
 		}
 	}
 	
+	
+	public void save() {
+		try
+		{
+			PlayerStatConfig.setStat(player, statMap);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void load() {
+		statMap = PlayerStatConfig.getStat(player);
+	}
 }
