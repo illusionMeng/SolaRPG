@@ -17,16 +17,9 @@ public class PlayerStat {
 	private HashMap<String, Integer> statMap;
 	private Player player;
 	
-//	public PlayerStat() {
-//		for(String s : types)
-//		{
-//			statMap.put(s, 0);
-//		}
-//	}
-
-	
 	public PlayerStat(Player p) {
 		player = p;
+		load();
 	}
 	
 	
@@ -37,6 +30,7 @@ public class PlayerStat {
 	
 	public void setTypeValue(String type, int value) {
 		statMap.put(type, value);
+		save();
 	}
 	
 	
@@ -57,6 +51,7 @@ public class PlayerStat {
 		{
 			statMap.put(types[i], values[i]);
 		}
+		save();
 	}
 	
 	

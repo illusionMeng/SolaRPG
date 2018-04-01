@@ -13,6 +13,14 @@ public class PlayerStatConfig {
 	public static void createConfig(Player player) throws IOException {
 			File file = new File("plugins/SolaRPG/PlayerStat", player.getUniqueId().toString());
 			FileConfiguration stat = YamlConfiguration.loadConfiguration(file);
+			String type;
+			
+			for(int i=0; i<PlayerStat.types.length; i++)
+			{
+				type = PlayerStat.types[i];
+				stat.addDefault("PlayerStat." + type, 0);
+			}
+			
 			stat.options().copyDefaults(true);
 			stat.save(file);
 
