@@ -8,9 +8,14 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class StatConfig {
-	public static void createConfig(String path, String fileName) {
+	public static void createConfig(String path, String fileName, String[] defaultKey, String[] defaultValue) {
 		File file = new File("plugins/SolaRPG/" + path, fileName);
 		FileConfiguration stat = YamlConfiguration.loadConfiguration(file);
+		
+		for(int i=0; i<defaultKey.length; i++)
+		{
+			stat.addDefault(defaultKey[i], defaultValue[i]);
+		}
 		
 		stat.options().copyDefaults(true);
 		try 
