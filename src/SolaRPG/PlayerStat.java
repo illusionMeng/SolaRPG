@@ -21,6 +21,7 @@ public class PlayerStat extends Stat {
 	
 	public void save() {
 			PlayerStatConfig.set(player, statMap);
+		PlayerStatConfig.set(player, statMap);
 	}
 	
 	
