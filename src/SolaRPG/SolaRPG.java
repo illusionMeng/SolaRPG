@@ -10,6 +10,7 @@ public class SolaRPG extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		defaultConfig();
+		getServer().getPluginManager().registerEvents(new Event(this), this);
 		getServer().getConsoleSender().sendMessage("[SolaRPG] SolaRPG Enabled!");
 	}
 	

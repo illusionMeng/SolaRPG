@@ -14,13 +14,13 @@ public class PlayerStat extends Stat {
 	
 	public PlayerStat(Player p) {
 		super();
-		types = new String[]{"str", "dex", "intel", "vit", "luc", "map", "mp", "rng"};
+		types = new String[]{"class", "str", "rng", "dex", "vit", "luc", "ap", "mp"};
 		player = p;
 	}
 	
 	
 	public void save() {
-			PlayerStatConfig.set(player, statMap);
+		PlayerStatConfig.set(player, statMap);
 	}
 	
 	
