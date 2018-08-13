@@ -29,19 +29,23 @@ public class StatConfig {
 
 	}
 
-
-	public static HashMap<String, Integer> getStat(String path, String fileName, String key, String[] types) {	
+	public static boolean exist(String path, String fileName) {
+		File file = new File("plugins/SolaRPG/" + path, fileName);
+		return file.exists();
+	}
+	
+	public static HashMap<String, String> getStat(String path, String fileName, String key, String[] types) {	
 		File file = new File("plugins/SolaRPG/" + path, fileName);
 		FileConfiguration stat = YamlConfiguration.loadConfiguration(file);
 	
-		HashMap<String, Integer> statMap = new HashMap<String, Integer>();
+		HashMap<String, String> statMap = new HashMap<String, String>();
 		String type;
-		int value;
+		String value;
 	
 		for(int i=0; i<types.length; i++)
 		{
 			type = types[i];
-			value = stat.getInt(key + "." + type);
+			value = stat.getString(key + "." + type);
 			statMap.put(type, value);
 		}
 	
@@ -49,7 +53,7 @@ public class StatConfig {
 	}
 
 
-	public static void setStat(String path, String fileName, String key, String[] types, HashMap<String, Integer> statMap) {
+	public static void setStat(String path, String fileName, String key, String[] types, HashMap<String, String> statMap) {
 		File file = new File("plugins/SolaRPG/" + path, fileName);
 		FileConfiguration stat = YamlConfiguration.loadConfiguration(file);
 		String type;

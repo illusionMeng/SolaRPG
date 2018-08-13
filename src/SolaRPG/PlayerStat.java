@@ -3,28 +3,50 @@ package SolaRPG;
 import org.bukkit.entity.Player;
 
 public class PlayerStat extends Stat {
-//	private FileConfiguration config;
-//	
-//	public PlayerStat(SolaRPG solaRPG) {
-//		config = solaRPG.getConfig();
-//
-//	}
+	
 	
 	private Player player;
+	private String[] values;
 	
-	public PlayerStat(Player p) {
-		super();
-		types = new String[]{"class", "str", "rng", "dex", "vit", "luc", "ap", "mp"};
-		player = p;
+	
+	public PlayerStat(Player player) {
+		this.player = player;
+		
+		types = new String[]{"name", "class", "str", "rng", "dex", "vit", "luc", "ap", "mp"};
+		values = new String[]{player.getName(), "none", "10", "10", "10", "10", "10", "10", "10"};
+		
+		if(!StatConfig.exist("PlayerStat", player.getUniqueId().toString()))
+		{
+			create();
+		}
+		
+		load();
+	}
+	
+	
+	private void create() {
+		String[] defaultKey = new String[9];
+		String[] defaultValue = new String[9];
+		for(int i=0; i<9; i++)
+		{
+			defaultKey[i] = "PlayerStat." + types[i];
+			defaultValue[i] = values[i];
+		}
+		
+		StatConfig.createConfig("PlayerStat", player.getUniqueId().toString(), defaultKey, defaultValue);
 	}
 	
 	
 	public void save() {
-		PlayerStatConfig.set(player, statMap);
+		StatConfig.setStat("PlayerStat", player.getUniqueId().toString(), "PlayerStat", PlayerStat.types, statMap);
 	}
 	
 	
 	public void load() {
-		statMap = PlayerStatConfig.get(player);
+		statMap = StatConfig.getStat("PlayerStat", player.getUniqueId().toString(), "PlayerStat", PlayerStat.types);
+	}
+	
+	public void delete() {
+		StatConfig.deleteConfig("PlayerStat", player.getUniqueId().toString());
 	}
 }
