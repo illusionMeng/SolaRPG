@@ -1,8 +1,17 @@
 package SolaRPG;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SolaRPG extends JavaPlugin {
@@ -12,6 +21,20 @@ public class SolaRPG extends JavaPlugin {
 		defaultConfig();
 		getServer().getPluginManager().registerEvents(new Event(this), this);
 		getServer().getConsoleSender().sendMessage("[SolaRPG] SolaRPG Enabled!");
+		ArrayList<ItemStack> items, test = new ArrayList<ItemStack>();
+		NamespacedKey key;
+	    ItemMeta test01 = items.getItemMeta();
+	    test01.setDisplayName(ChatColor.GOLD + "破邪之劍");
+	    test01.setLore(Arrays.asList(new String[] {
+	       (ChatColor.WHITE + "擁有強大力量的劍") , 
+	       (ChatColor.RED + "非常危險!")
+	    }));
+	    item01.setItemMeta(test01);
+		key = new NamespacedKey(this , "item01");
+	    ShapedRecipe test1 = new ShapedRecipe(key, item01).shape("   ","!/!","   ")
+	    .setIngredient('!',Material.BEDROCK)
+	    .setIngredient('/',Material.GOLD_BLOCK);
+	    getServer().addRecipe(test1);
 	}
 	
 	@Override
