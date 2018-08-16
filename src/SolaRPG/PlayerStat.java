@@ -38,12 +38,12 @@ public class PlayerStat extends Stat {
 	
 	
 	public void save() {
-		StatConfig.setStat("PlayerStat", player.getUniqueId().toString(), "PlayerStat", types, statMap);
+		StatConfig.setStat("PlayerStat", player.getUniqueId().toString(), "PlayerStat", PlayerStat.types, statMap);
 	}
 	
 	
 	public void load() {
-		statMap = StatConfig.getStat("PlayerStat", player.getUniqueId().toString(), "PlayerStat", types);
+		statMap = StatConfig.getStat("PlayerStat", player.getUniqueId().toString(), "PlayerStat", PlayerStat.types);
 	}
 	
 	public void delete() {
