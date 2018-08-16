@@ -29,6 +29,7 @@ public class StatConfig {
 
 	}
 
+	
 	public static boolean exist(String path, String fileName) {
 		File file = new File("plugins/SolaRPG/" + path, fileName);
 		return file.exists();

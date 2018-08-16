@@ -1,7 +1,5 @@
 package SolaRPG;
 
-import java.util.UUID;
-
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.ExperienceOrb;
@@ -9,8 +7,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
@@ -34,6 +32,7 @@ public class Event implements Listener {
 		event.getPlayer().sendMessage(playerStat.getTypeValue("luc")); //test
 		event.getPlayer().sendMessage(playerStat.getTypeValue("ap")); //test
 		event.getPlayer().sendMessage(playerStat.getTypeValue("mp")); //test
+		
 	}
 	
     @EventHandler
@@ -47,7 +46,7 @@ public class Event implements Listener {
 	@EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        UUID uuid = player.getUniqueId();
+     //   UUID uuid = player.getUniqueId();
         String name = player.getName();
         String msg = event.getMessage();
         if(player.isOp() == true)

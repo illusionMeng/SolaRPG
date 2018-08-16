@@ -82,7 +82,7 @@ public class CommandHandler extends JavaPlugin implements Listener{
 		if(args.length == 4) {
 			for(Player p:this.getServer().getOnlinePlayers()){
 				if (args[3] == p.getName()) {
-					p.getInventory().addItem(null);
+			//		p.getInventory().addItem(null);
 				}
 			}
 		}
